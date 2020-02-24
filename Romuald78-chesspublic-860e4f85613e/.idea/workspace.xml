@@ -81,7 +81,7 @@
       <option name="presentableId" value="Default" />
       <updated>1582473974881</updated>
       <workItem from="1582535928499" duration="1001000" />
-      <workItem from="1582536981368" duration="1859000" />
+      <workItem from="1582536981368" duration="8061000" />
     </task>
     <servers />
   </component>
@@ -97,30 +97,38 @@
       <screen x="-1920" y="-101" width="1920" height="1080" />
     </state>
     <state x="-1111" y="346" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1440.900/-1920.-101.1920.1080@-1920.-101.1920.1080" timestamp="1582536185668" />
-    <state width="1878" height="217" key="GridCell.Tab.0.bottom" timestamp="1582541478622">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1878" height="217" key="GridCell.Tab.0.bottom" timestamp="1582559301251">
+      <screen x="-1920" y="-101" width="1920" height="1080" />
     </state>
-    <state width="1878" height="217" key="GridCell.Tab.0.bottom/0.0.1440.900/-1920.-101.1920.1080@-1920.-101.1920.1080" timestamp="1582537007270" />
+    <state width="1878" height="217" key="GridCell.Tab.0.bottom/0.0.1440.900/-1920.-101.1920.1080@-1920.-101.1920.1080" timestamp="1582559301251" />
     <state width="1878" height="217" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1582541478622" />
-    <state width="1878" height="217" key="GridCell.Tab.0.center" timestamp="1582541478620">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1878" height="217" key="GridCell.Tab.0.center" timestamp="1582559301249">
+      <screen x="-1920" y="-101" width="1920" height="1080" />
     </state>
-    <state width="1878" height="217" key="GridCell.Tab.0.center/0.0.1440.900/-1920.-101.1920.1080@-1920.-101.1920.1080" timestamp="1582537007268" />
+    <state width="1878" height="217" key="GridCell.Tab.0.center/0.0.1440.900/-1920.-101.1920.1080@-1920.-101.1920.1080" timestamp="1582559301249" />
     <state width="1878" height="217" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1582541478620" />
-    <state width="1878" height="217" key="GridCell.Tab.0.left" timestamp="1582541478619">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1878" height="217" key="GridCell.Tab.0.left" timestamp="1582559301248">
+      <screen x="-1920" y="-101" width="1920" height="1080" />
     </state>
-    <state width="1878" height="217" key="GridCell.Tab.0.left/0.0.1440.900/-1920.-101.1920.1080@-1920.-101.1920.1080" timestamp="1582537007267" />
+    <state width="1878" height="217" key="GridCell.Tab.0.left/0.0.1440.900/-1920.-101.1920.1080@-1920.-101.1920.1080" timestamp="1582559301248" />
     <state width="1878" height="217" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1582541478619" />
-    <state width="1878" height="217" key="GridCell.Tab.0.right" timestamp="1582541478621">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1878" height="217" key="GridCell.Tab.0.right" timestamp="1582559301250">
+      <screen x="-1920" y="-101" width="1920" height="1080" />
     </state>
-    <state width="1878" height="217" key="GridCell.Tab.0.right/0.0.1440.900/-1920.-101.1920.1080@-1920.-101.1920.1080" timestamp="1582537007269" />
+    <state width="1878" height="217" key="GridCell.Tab.0.right/0.0.1440.900/-1920.-101.1920.1080@-1920.-101.1920.1080" timestamp="1582559301250" />
     <state width="1878" height="217" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1582541478621" />
     <state x="-1283" y="271" key="com.intellij.ide.util.TipDialog" timestamp="1582536981083">
       <screen x="-1920" y="-101" width="1920" height="1080" />
     </state>
     <state x="-1283" y="271" key="com.intellij.ide.util.TipDialog/0.0.1440.900/-1920.-101.1920.1080@-1920.-101.1920.1080" timestamp="1582536981083" />
+    <state x="-1198" y="62" key="refactoring.ChangeSignatureDialog" timestamp="1582556929314">
+      <screen x="-1920" y="-101" width="1920" height="1080" />
+    </state>
+    <state x="-1198" y="62" key="refactoring.ChangeSignatureDialog/0.0.1440.900/-1920.-101.1920.1080@-1920.-101.1920.1080" timestamp="1582556929314" />
+    <state x="-1295" y="140" width="670" height="676" key="search.everywhere.popup" timestamp="1582557867746">
+      <screen x="-1920" y="-101" width="1920" height="1080" />
+    </state>
+    <state x="-1295" y="140" width="670" height="676" key="search.everywhere.popup/0.0.1440.900/-1920.-101.1920.1080@-1920.-101.1920.1080" timestamp="1582557867746" />
   </component>
   <component name="hg4idea.settings">
     <option name="CHECK_INCOMING_OUTGOING" value="true" />

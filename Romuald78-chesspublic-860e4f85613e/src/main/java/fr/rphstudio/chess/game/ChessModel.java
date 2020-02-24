@@ -13,12 +13,10 @@ import static fr.rphstudio.chess.interf.IChess.ChessType.TYP_PAWN;
 
 public class ChessModel implements IChess {
 private static ChessModel instance= new ChessModel();
-
     private ChessModel(){
 
     }
     public static IChess getInstance(){
-
         return ChessModel.instance;
     }
     @Override
