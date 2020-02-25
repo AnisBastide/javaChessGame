@@ -1,5 +1,7 @@
 fr/rphstudio/chess/game/Pawn.class
+fr/rphstudio/chess/game/King$1.class
 fr/rphstudio/chess/launcher/ChessFontManager$LetterInfo.class
+fr/rphstudio/chess/game/Queen$1.class
 fr/rphstudio/chess/interf/IMove.class
 fr/rphstudio/chess/interf/IChess$ChessColor.class
 fr/rphstudio/chess/launcher/ChessFontManager.class
@@ -9,6 +11,8 @@ fr/rphstudio/chess/game/King.class
 fr/rphstudio/chess/launcher/MainLauncher.class
 fr/rphstudio/chess/game/Piece.class
 fr/rphstudio/chess/interf/IChess$ChessType.class
+fr/rphstudio/chess/game/Rook$1.class
+fr/rphstudio/chess/game/Bishop$1.class
 fr/rphstudio/chess/interf/ChessException.class
 fr/rphstudio/chess/launcher/ChessGameController.class
 fr/rphstudio/chess/interf/OutOfBoardException.class
@@ -21,4 +25,5 @@ fr/rphstudio/chess/interf/IChess$ChessPosition.class
 fr/rphstudio/chess/game/Pawn$1.class
 fr/rphstudio/chess/game/Rook.class
 fr/rphstudio/chess/game/Bishop.class
+fr/rphstudio/chess/game/Knight$1.class
 fr/rphstudio/chess/interf/EmptyCellException.class
