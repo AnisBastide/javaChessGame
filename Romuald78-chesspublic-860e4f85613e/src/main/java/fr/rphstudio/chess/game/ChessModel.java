@@ -27,7 +27,7 @@ private Board board=new Board();
     @Override
     public ChessType getPieceType(ChessPosition p) throws EmptyCellException, OutOfBoardException {
         try {
-            return board.getPiece(p).GetType();
+            return board.getPiece(p).getType();
         }catch (NullPointerException npe){
             throw new EmptyCellException();
         }
@@ -37,7 +37,7 @@ private Board board=new Board();
     @Override
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
         try {
-            return board.getPiece(p).GetColor();
+            return board.getPiece(p).getColor();
         }catch (NullPointerException npe){
             throw new EmptyCellException();
         }
@@ -45,7 +45,7 @@ private Board board=new Board();
 
     @Override
     public int getNbRemainingPieces(ChessColor color) {
-        return 0;
+        return board.getRemainingPieces(color);
     }
 
     @Override

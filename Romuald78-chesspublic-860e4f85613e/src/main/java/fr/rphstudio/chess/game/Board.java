@@ -51,4 +51,16 @@ public class Board {
         }
         return null;
     }
+    public int getRemainingPieces (IChess.ChessColor color){
+        int count=0;
+        for (Piece piece: pieceList
+             )
+        {
+            if (piece.getColor().equals(color)){
+                count++;
+            }
+
+        }
+        return count;
+    }
 }

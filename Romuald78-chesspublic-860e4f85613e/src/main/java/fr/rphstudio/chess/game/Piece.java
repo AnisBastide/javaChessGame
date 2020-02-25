@@ -17,10 +17,10 @@ public class Piece {
     public IChess.ChessPosition getPosition(){
         return position;
 }
-    public IChess.ChessType GetType(){
+    public IChess.ChessType getType(){
         return type;
     }
-    public IChess.ChessColor GetColor(){
+    public IChess.ChessColor getColor(){
         return color;
     }
 }
