@@ -10,14 +10,17 @@ import java.util.List;
 import static fr.rphstudio.chess.interf.IChess.ChessKingState.KING_SAFE;
 
 public class ChessModel implements IChess {
-private static ChessModel instance= new ChessModel();
-private Board board=new Board();
-    private ChessModel(){
+    private static ChessModel instance = new ChessModel();
+    private Board board = new Board();
+
+    private ChessModel() {
 
     }
-    public static IChess getInstance(){
+
+    public static IChess getInstance() {
         return ChessModel.instance;
     }
+
     @Override
     public void reinit() {
 
@@ -28,7 +31,7 @@ private Board board=new Board();
     public ChessType getPieceType(ChessPosition p) throws EmptyCellException, OutOfBoardException {
         try {
             return board.getPiece(p).GetType();
-        }catch (NullPointerException npe){
+        } catch (NullPointerException npe) {
             throw new EmptyCellException();
         }
 
@@ -38,7 +41,7 @@ private Board board=new Board();
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
         try {
             return board.getPiece(p).GetColor();
-        }catch (NullPointerException npe){
+        } catch (NullPointerException npe) {
             throw new EmptyCellException();
         }
     }
@@ -50,7 +53,12 @@ private Board board=new Board();
 
     @Override
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
-        return new ArrayList<ChessPosition>();
+        try {
+            return board.getPiece(p).GetPossibleMoves(board);
+        } catch (NullPointerException npe) {
+            return new ArrayList<>();
+        }
+
     }
 
     @Override

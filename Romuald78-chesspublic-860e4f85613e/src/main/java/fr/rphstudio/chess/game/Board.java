@@ -1,6 +1,7 @@
 package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.IChess;
+import fr.rphstudio.chess.interf.IMove;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ public class Board {
     public Board() {
         IChess.ChessColor color;
         IChess.ChessType type=null;
+        IMove move= new Pawn();
         pieceList = new ArrayList<Piece>();
         for (int x = 0; x <= 7; x++) {
             for (int y = 0; y <= 7; y++) {
@@ -38,7 +40,7 @@ public class Board {
                 } else if (cPosition.x == 3) {
                     type = IChess.ChessType.TYP_KING;
                 }
-                pieceList.add(new Piece(color, type, (IChess.ChessPosition) cPosition));
+                pieceList.add(new Piece(color, type, (IChess.ChessPosition) cPosition,move));
             }
         }
     }
