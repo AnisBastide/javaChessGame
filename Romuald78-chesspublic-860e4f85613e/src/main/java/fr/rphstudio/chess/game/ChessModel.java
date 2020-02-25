@@ -7,12 +7,11 @@ import fr.rphstudio.chess.interf.OutOfBoardException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static fr.rphstudio.chess.interf.IChess.ChessColor.CLR_BLACK;
 import static fr.rphstudio.chess.interf.IChess.ChessKingState.KING_SAFE;
-import static fr.rphstudio.chess.interf.IChess.ChessType.TYP_PAWN;
 
 public class ChessModel implements IChess {
 private static ChessModel instance= new ChessModel();
+private Board board=new Board();
     private ChessModel(){
 
     }
@@ -27,12 +26,21 @@ private static ChessModel instance= new ChessModel();
 
     @Override
     public ChessType getPieceType(ChessPosition p) throws EmptyCellException, OutOfBoardException {
-        return TYP_PAWN;
+        try {
+            return board.getPiece(p).GetType();
+        }catch (NullPointerException npe){
+            throw new EmptyCellException();
+        }
+
     }
 
     @Override
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
-        return CLR_BLACK;
+        try {
+            return board.getPiece(p).GetColor();
+        }catch (NullPointerException npe){
+            throw new EmptyCellException();
+        }
     }
 
     @Override

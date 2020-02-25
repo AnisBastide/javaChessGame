@@ -2,6 +2,7 @@ package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.IChess;
 
+import java.awt.*;
 import java.util.List;
 
 public class Piece {
@@ -13,5 +14,13 @@ public class Piece {
     this.type=ChessType;
     this.position=position;
 }
-
+    public IChess.ChessPosition getPosition(){
+        return position;
+}
+    public IChess.ChessType GetType(){
+        return type;
+    }
+    public IChess.ChessColor GetColor(){
+        return color;
+    }
 }
