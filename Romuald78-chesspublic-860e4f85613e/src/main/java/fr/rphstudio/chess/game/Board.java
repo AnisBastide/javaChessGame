@@ -53,4 +53,12 @@ public class Board {
         }
         return null;
     }
+    public void movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1){
+        Piece pieceToMove =getPiece(p0);
+        Piece pieceToRemove = getPiece(p1);
+        if(pieceToRemove!=null){
+            pieceList.remove(pieceToRemove);
+        }
+        pieceToMove.setPosition(p1);
+    }
 }

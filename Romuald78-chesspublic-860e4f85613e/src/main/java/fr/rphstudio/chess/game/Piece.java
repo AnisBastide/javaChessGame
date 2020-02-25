@@ -12,23 +12,31 @@ public class Piece {
     private IChess.ChessPosition position;
     private IMove imove;
 
-    public Piece(IChess.ChessColor ChessColor, IChess.ChessType ChessType, IChess.ChessPosition position,IMove move){
-        this.color=ChessColor;
-        this.type=ChessType;
-        this.position=position;
-        this.imove=move;
+    public Piece(IChess.ChessColor ChessColor, IChess.ChessType ChessType, IChess.ChessPosition position, IMove move) {
+        this.color = ChessColor;
+        this.type = ChessType;
+        this.position = position;
+        this.imove = move;
     }
 
-    public IChess.ChessPosition getPosition(){
+    public IChess.ChessPosition getPosition() {
         return position;
     }
-    public IChess.ChessType GetType(){
+
+    public IChess.ChessType GetType() {
         return type;
     }
-    public IChess.ChessColor GetColor(){
+
+    public IChess.ChessColor GetColor() {
         return color;
     }
-    public List<IChess.ChessPosition> GetPossibleMoves(Board board){
+
+    public List<IChess.ChessPosition> GetPossibleMoves(Board board) {
         return imove.getPieceMoves(position, board);
+    }
+
+    public void setPosition(IChess.ChessPosition p1) {
+        this.position.x = p1.x;
+        this.position.y = p1.y;
     }
 }

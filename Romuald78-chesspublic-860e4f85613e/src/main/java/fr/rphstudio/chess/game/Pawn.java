@@ -15,12 +15,12 @@ public class Pawn implements IMove {
         switch (board.getPiece(p).GetColor()) {
             case CLR_WHITE:
                 if (p.y == 6 && board.getPiece(new IChess.ChessPosition(p.x, p.y - 1)) == null) {
-                    list.add(new IChess.ChessPosition(p.x, p.y - 2));
+                    list.add(new IChess.ChessPosition(p.x, p.y - 6));
                 }
                 break;
             case CLR_BLACK:
                 if (p.y == 1 && board.getPiece(new IChess.ChessPosition(p.x, p.y + 1)) == null) {
-                    list.add(new IChess.ChessPosition(p.x, p.y + 2));
+                    list.add(new IChess.ChessPosition(p.x, p.y + 6));
                 }
                 break;
         }
