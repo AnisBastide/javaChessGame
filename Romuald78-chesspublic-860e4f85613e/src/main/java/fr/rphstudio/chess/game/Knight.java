@@ -2,7 +2,6 @@ package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.IMove;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,14 +9,15 @@ public class Knight implements IMove {
 
     @Override
     public List<IChess.ChessPosition> getPieceMoves(IChess.ChessPosition p, Board board) {
-        IChess.ChessPosition position;
         List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
-//        if (p.y == 7 && board.getPiece(p).GetType() == IChess.ChessType.TYP_KNIGHT) {
-//            list.add(new IChess.ChessPosition(p.x + 1, p.y - 2));
-//            list.add(new IChess.ChessPosition(p.x - 1, p.y - 2));
-//            list.add(new IChess.ChessPosition(p.x + 2, p.y - 1));
-//            list.add(new IChess.ChessPosition(p.x - 2, p.y - 1));
-//        }
+        for (int dx = -2; dx <= 2; dx++){
+            for (int dy = -2; dy <= 2; dy++){
+                if (Math.abs(dx) + Math.abs(dy) == 3){
+                    IChess.ChessPosition pos = new IChess.ChessPosition(p.x + dx, p.y + dy);
+                    list.addAll(MoveUtil.PossibleMove(p, pos, board));
+                }
+            }
+        }
         return list;
     }
 }

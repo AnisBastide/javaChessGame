@@ -1,11 +1,42 @@
 package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.IChess;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class MoveUtil {
+
+    public static boolean isValidPosition(IChess.ChessPosition pos){
+        if (pos.x <= 7 && pos.x >= 0 && pos.y <= 7 && pos.y >= 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static boolean isEmpty(IChess.ChessPosition pos, Board board){
+        if (board.getPiece(pos) == null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static boolean isEnemy(IChess.ChessPosition p, IChess.ChessPosition pos, Board board){
+        if (board.getPiece(pos).GetColor() != board.getPiece(p).GetColor()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static boolean isEmptyOrEnemy(IChess.ChessPosition p, IChess.ChessPosition pos, Board board){
+        if (board.getPiece(pos).GetColor() != board.getPiece(p).GetColor() || board.getPiece(pos) == null){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
     public static List<IChess.ChessPosition> Diagonal(IChess.ChessPosition p, Board board) {
         List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
@@ -20,21 +51,7 @@ public class MoveUtil {
             }
             for (int dis = 1; dis <= 7; dis++) {
                 IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
-                if (p.x + (dx * dis) == 8 || p.x + (dx * dis) == -1 || p.y + (dx * dis) == 8 || p.y + (dx * dis) == -1) {
-                    break;
-                }
-                if (board.getPiece(pos) == null){
-                    list.add(pos);
-                }
-                if (board.getPiece(pos) != null){
-                    if (board.getPiece(pos).GetColor() != board.getPiece(p).GetColor()){
-                        list.add(pos);
-                    }
-                    else{
-                        break;
-                    }
-                }
-                return list;
+                return PossibleMove(p, pos, board);
             }
         }
         return list;
@@ -61,22 +78,24 @@ public class MoveUtil {
             }
             for (int dis = 1; dis <= 7; dis++) {
                 IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
-                if (p.x + (dx * dis) == 8 || p.x + (dx * dis) == -1 || p.y + (dx * dis) == 8 || p.y + (dx * dis) == -1) {
-                    break;
-                }
-                if (board.getPiece(pos) == null){
+                return PossibleMove(p, pos, board);
+            }
+        }
+        return list;
+    }
+
+    public static List<IChess.ChessPosition> PossibleMove(IChess.ChessPosition p, IChess.ChessPosition pos, Board board){
+        List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
+        if (pos.x <= 7 && pos.x >= 0 && pos.y <= 7 && pos.y >= 0) {
+            if (board.getPiece(pos) == null){
+                list.add(pos);
+            }
+            if (board.getPiece(pos) != null){
+                if (board.getPiece(pos).GetColor() != board.getPiece(p).GetColor()){
                     list.add(pos);
                 }
-                if (board.getPiece(pos) != null){
-                    if (board.getPiece(pos).GetColor() != board.getPiece(p).GetColor()){
-                        list.add(pos);
-                    }
-                    else{
-                        break;
-                    }
-                }
-                return list;
             }
+            return list;
         }
         return list;
     }
