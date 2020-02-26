@@ -23,7 +23,7 @@ public class MoveUtil {
     }
 
     public static boolean isEnemy(IChess.ChessPosition p, IChess.ChessPosition pos, Board board){
-        if (board.getPiece(pos).GetColor() != board.getPiece(p).GetColor()){
+        if (board.getPiece(pos).getColor() != board.getPiece(p).getColor()){
             return true;
         }else{
             return false;
@@ -31,7 +31,7 @@ public class MoveUtil {
     }
 
     public static boolean isEmptyOrEnemy(IChess.ChessPosition p, IChess.ChessPosition pos, Board board){
-        if (board.getPiece(pos).GetColor() != board.getPiece(p).GetColor() || board.getPiece(pos) == null){
+        if (board.getPiece(pos).getColor() != board.getPiece(p).getColor() || board.getPiece(pos) == null){
             return true;
         }else{
             return false;
@@ -99,7 +99,7 @@ public class MoveUtil {
                 list.add(pos);
             }
             if (board.getPiece(pos) != null){
-                if (board.getPiece(pos).GetColor() != board.getPiece(p).GetColor()){
+                if (board.getPiece(pos).getColor() != board.getPiece(p).getColor()){
                     list.add(pos);
                 }
             }

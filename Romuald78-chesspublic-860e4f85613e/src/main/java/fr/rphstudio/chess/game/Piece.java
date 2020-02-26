@@ -39,8 +39,13 @@ public class Piece {
         this.position.y = p1.y;
     }
 
-    public List<IChess.ChessPosition> GetPossibleMoves(Board board) throws OutOfBoardException {
-        return imove.getPieceMoves(position, board);
+    public List<IChess.ChessPosition> getPossibleMoves(Board board){
+        try{
+            return imove.getPieceMoves(position, board);
+        } catch (OutOfBoardException e) {
+
+        }
+        return null;
     }
 
 }

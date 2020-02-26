@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/interf/IChess.java
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/interf/EmptyCellException.java
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Pawn.java
@@ -13,27 +12,8 @@
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Bishop.java
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/interf/ChessException.java
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Piece.java
+/Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/MoveUtil.java
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/launcher/ChessGameController.java
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Queen.java
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Board.java
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/LostPieces.java
-=======
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/ChessModel.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/interf/ChessException.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/launcher/MainLauncher.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/interf/EmptyCellException.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/interf/IMove.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/interf/OutOfBoardException.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/launcher/ChessGameController.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/King.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Rook.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Bishop.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/MoveUtil.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/launcher/ChessFontManager.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Knight.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Queen.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Pawn.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Piece.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Board.java
-/Users/escias/Desktop/Cours/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/interf/IChess.java
->>>>>>> b0eb65c5a79bf6e83d8ef98e5aae0a3cf054fb5a

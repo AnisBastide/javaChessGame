@@ -2,6 +2,7 @@ package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.IMove;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,29 +17,44 @@ public class Pawn implements IMove {
                 if (p.y == 6) {
                     list.add(new IChess.ChessPosition(p.x, p.y - 2));
                     list.add(new IChess.ChessPosition(p.x, p.y - 1));
-                }
-                else if (p.y < 6){
+                } else if (p.y < 6) {
                     list.add(new IChess.ChessPosition(p.x, p.y - 1));
-                    if (board.getPiece(new IChess.ChessPosition(p.x + 1, p.y - 1)).getColor() != board.getPiece(p).getColor()){
-                        list.add(new IChess.ChessPosition(p.x + 1, p.y - 1));
+                    try {
+                        if (board.getPiece(new IChess.ChessPosition(p.x + 1, p.y - 1)).getColor() != board.getPiece(p).getColor()) {
+                            list.add(new IChess.ChessPosition(p.x + 1, p.y - 1));
+                        }
+                    } catch (Exception e) {
+
                     }
-                    if (board.getPiece(new IChess.ChessPosition(p.x - 1, p.y - 1)).getColor() != board.getPiece(p).getColor()){
-                        list.add(new IChess.ChessPosition(p.x - 1, p.y - 1));
+                    try {
+                        if (board.getPiece(new IChess.ChessPosition(p.x - 1, p.y - 1)).getColor() != board.getPiece(p).getColor()) {
+                            list.add(new IChess.ChessPosition(p.x - 1, p.y - 1));
+                        }
+                    } catch (Exception e) {
+
                     }
+
                 }
                 break;
             case CLR_BLACK:
                 if (p.y == 1) {
                     list.add(new IChess.ChessPosition(p.x, p.y + 2));
                     list.add(new IChess.ChessPosition(p.x, p.y + 1));
-                }
-                else if (p.y > 1){
+                } else if (p.y > 1) {
                     list.add(new IChess.ChessPosition(p.x, p.y + 1));
-                    if (board.getPiece(new IChess.ChessPosition(p.x + 1, p.y + 1)).getColor() != board.getPiece(p).getColor()){
-                        list.add(new IChess.ChessPosition(p.x + 1, p.y + 1));
+                    try {
+                        if (board.getPiece(new IChess.ChessPosition(p.x + 1, p.y + 1)).getColor() != board.getPiece(p).getColor()) {
+                            list.add(new IChess.ChessPosition(p.x + 1, p.y + 1));
+                        }
+                    } catch (Exception e) {
+
                     }
-                    if (board.getPiece(new IChess.ChessPosition(p.x - 1, p.y + 1)).getColor() != board.getPiece(p).getColor()){
-                        list.add(new IChess.ChessPosition(p.x - 1, p.y + 1));
+                    try{
+                        if (board.getPiece(new IChess.ChessPosition(p.x - 1, p.y + 1)).getColor() != board.getPiece(p).getColor()) {
+                            list.add(new IChess.ChessPosition(p.x - 1, p.y + 1));
+                        }
+                    } catch (Exception e) {
+
                     }
                 }
                 break;
