@@ -2,8 +2,7 @@ package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.IMove;
-
-import java.awt.*;
+import fr.rphstudio.chess.interf.OutOfBoardException;
 import java.util.List;
 
 public class Piece {
@@ -28,7 +27,8 @@ public class Piece {
     public IChess.ChessColor GetColor(){
         return color;
     }
-    public List<IChess.ChessPosition> GetPossibleMoves(Board board){
+    public List<IChess.ChessPosition> GetPossibleMoves(Board board) throws OutOfBoardException {
         return imove.getPieceMoves(position, board);
     }
+
 }

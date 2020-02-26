@@ -55,7 +55,7 @@ public class ChessModel implements IChess {
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
         try {
             return board.getPiece(p).GetPossibleMoves(board);
-        } catch (NullPointerException npe) {
+        } catch (NullPointerException | OutOfBoardException npe) {
             return new ArrayList<>();
         }
 

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface IMove {
 
-    List<IChess.ChessPosition> getPieceMoves(IChess.ChessPosition position, Board board);
+    List<IChess.ChessPosition> getPieceMoves(IChess.ChessPosition position, Board board) throws OutOfBoardException;
 }
