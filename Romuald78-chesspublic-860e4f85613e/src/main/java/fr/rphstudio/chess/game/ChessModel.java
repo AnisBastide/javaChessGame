@@ -11,7 +11,7 @@ import static fr.rphstudio.chess.interf.IChess.ChessKingState.KING_SAFE;
 
 public class ChessModel implements IChess {
     private static ChessModel instance = new ChessModel();
-    private LostPieces lostPieces=new LostPieces();
+    private LostPieces lostPieces;
     private Board board;
 
 
@@ -29,6 +29,7 @@ public class ChessModel implements IChess {
     @Override
     public void reinit() {
         board=new Board();
+        lostPieces=new LostPieces();
     }
 
 
