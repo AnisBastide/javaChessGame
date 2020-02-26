@@ -7,15 +7,10 @@ import fr.rphstudio.chess.interf.OutOfBoardException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static fr.rphstudio.chess.interf.IChess.ChessKingState.KING_SAFE;
-
 public class ChessModel implements IChess {
     private static ChessModel instance = new ChessModel();
     private LostPieces lostPieces;
     private Board board;
-
-
-
 
 
     private ChessModel() {
@@ -28,8 +23,8 @@ public class ChessModel implements IChess {
 
     @Override
     public void reinit() {
-        board=new Board();
-        lostPieces=new LostPieces();
+        board = new Board();
+        lostPieces = new LostPieces();
     }
 
 
@@ -37,7 +32,7 @@ public class ChessModel implements IChess {
     public ChessType getPieceType(ChessPosition p) throws EmptyCellException, OutOfBoardException {
         try {
             return board.getPiece(p).getType();
-        }catch (NullPointerException npe){
+        } catch (NullPointerException npe) {
             throw new EmptyCellException();
         }
 
@@ -47,7 +42,7 @@ public class ChessModel implements IChess {
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
         try {
             return board.getPiece(p).getColor();
-        }catch (NullPointerException npe){
+        } catch (NullPointerException npe) {
             throw new EmptyCellException();
         }
     }
@@ -60,7 +55,7 @@ public class ChessModel implements IChess {
     @Override
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
         try {
-            return board.getPiece(p).GetPossibleMoves(board);
+            return board.getPiece(p).getPossibleMoves(board);
         } catch (NullPointerException npe) {
             return new ArrayList<>();
         }
@@ -69,20 +64,20 @@ public class ChessModel implements IChess {
 
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
-        Piece lostPiece=board.movePiece(p0,p1);
-        if (lostPiece != null){
+        Piece lostPiece = board.movePiece(p0, p1);
+        if (lostPiece != null) {
             lostPieces.lostPieces(lostPiece);
         }
     }
 
     @Override
     public ChessKingState getKingState(ChessColor color) {
-        return KING_SAFE;
+        return board.kingState(color, board);
     }
 
     @Override
     public List<ChessType> getRemovedPieces(ChessColor color) {
-        if(lostPieces!=null){
+        if (lostPieces != null) {
             return lostPieces.getLostPiecesType(color);
         }
         return new ArrayList<ChessType>();

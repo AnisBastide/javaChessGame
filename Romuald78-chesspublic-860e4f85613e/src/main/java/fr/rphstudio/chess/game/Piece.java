@@ -27,15 +27,16 @@ public class Piece {
         return type;
     }
 
-    public IChess.ChessType getType(){
+    public IChess.ChessType getType() {
         return type;
     }
-    public IChess.ChessColor getColor(){
+
+    public IChess.ChessColor getColor() {
 
         return color;
     }
 
-    public List<IChess.ChessPosition> GetPossibleMoves(Board board) {
+    public List<IChess.ChessPosition> getPossibleMoves(Board board) {
         return imove.getPieceMoves(position, board);
     }
 
