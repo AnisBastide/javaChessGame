@@ -14,6 +14,7 @@ fr/rphstudio/chess/interf/ChessException.class
 fr/rphstudio/chess/launcher/ChessGameController.class
 fr/rphstudio/chess/interf/OutOfBoardException.class
 fr/rphstudio/chess/interf/IChess$ChessKingState.class
+fr/rphstudio/chess/game/MoveUtil.class
 fr/rphstudio/chess/game/Queen.class
 fr/rphstudio/chess/launcher/ChessFontManager$1.class
 fr/rphstudio/chess/game/ChessModel.class
