@@ -12,6 +12,7 @@ import static fr.rphstudio.chess.interf.IChess.ChessKingState.KING_SAFE;
 public class ChessModel implements IChess {
     private static ChessModel instance = new ChessModel();
     private Board board = new Board();
+    private LostPieces lostPieces=new LostPieces();
 
     private ChessModel() {
 
@@ -63,7 +64,10 @@ public class ChessModel implements IChess {
 
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
-        board.movePiece(p0,p1);
+        Piece lostPiece=board.movePiece(p0,p1);
+        if (lostPiece != null){
+            lostPieces.lostPieces(lostPiece);
+        }
     }
 
     @Override
@@ -73,6 +77,9 @@ public class ChessModel implements IChess {
 
     @Override
     public List<ChessType> getRemovedPieces(ChessColor color) {
+        if(lostPieces!=null){
+            return lostPieces.getLostPiecesType(color);
+        }
         return new ArrayList<ChessType>();
     }
 

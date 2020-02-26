@@ -54,12 +54,17 @@ public class Board {
         return null;
     }
 
-    public void movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1) {
+    public Piece movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1) {
         Piece pieceToMove = getPiece(p0);
         Piece pieceToRemove = getPiece(p1);
+        pieceToMove.setPosition(p1);
         if (pieceToRemove != null) {
+            int index=pieceList.indexOf(pieceToRemove);
+            Piece pieceLost=pieceList.get(index);
             pieceList.remove(pieceToRemove);
+            return pieceLost;
         }
+        return null;
     }
 
     public int getRemainingPieces (IChess.ChessColor color){
