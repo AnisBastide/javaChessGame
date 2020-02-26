@@ -56,7 +56,7 @@ public class ChessModel implements IChess {
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
         try {
             List<ChessPosition> possibleMoves = board.getPiece(p).getPossibleMoves(board);
-            return board.checkMoves(p, possibleMoves, board);
+            return board.checkMoves(p, possibleMoves);
         } catch (NullPointerException npe) {
             return new ArrayList<>();
         }
@@ -73,7 +73,7 @@ public class ChessModel implements IChess {
 
     @Override
     public ChessKingState getKingState(ChessColor color) {
-        return board.kingState(color, board);
+        return board.kingState(color);
     }
 
     @Override

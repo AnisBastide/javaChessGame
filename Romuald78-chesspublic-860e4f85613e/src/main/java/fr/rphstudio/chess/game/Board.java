@@ -1,5 +1,6 @@
 package fr.rphstudio.chess.game;
 
+import fr.rphstudio.chess.interf.ChessException;
 import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.IMove;
 
@@ -56,10 +57,16 @@ public class Board {
     }
 
     public Piece movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1) {
-        return this.movePiece(p0, p1, false);
+        Piece piece=null;
+        try{
+            piece=this.movePiece(p0, p1, false);
+        } catch (ChessException e) {
+
+        }
+        return piece;
     }
 
-    public Piece movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1, boolean isFakeMove) {
+    public Piece movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1, boolean isFakeMove) throws ChessException {
         Piece pieceToMove = getPiece(p0);
         Piece pieceToRemove = getPiece(p1);
         pieceToMove.setPosition(p1);
@@ -67,7 +74,15 @@ public class Board {
             pieceList.remove(pieceToRemove);
         }
         if (isFakeMove) {
-            pieceList.add(pieceToRemove);
+            //TODO tester l'etat du roi et memoriser
+            IChess.ChessKingState status =kingState(pieceToMove.getColor());
+            pieceToMove.setPosition(p0);
+            if (pieceToRemove != null) {
+                pieceList.add(pieceToRemove);
+            }
+            if (status== IChess.ChessKingState.KING_THREATEN){
+                throw new ChessException();
+            }
         }
         return pieceToRemove;
     }
@@ -84,7 +99,7 @@ public class Board {
         return count;
     }
 
-    public IChess.ChessKingState kingState(IChess.ChessColor color, Board board) {
+    public IChess.ChessKingState kingState(IChess.ChessColor color) {
         IChess.ChessPosition kingPosition = new IChess.ChessPosition();
         for (Piece piece : pieceList) {
             if (piece.getType().equals(IChess.ChessType.TYP_KING) && piece.getColor().equals(color)) {
@@ -95,7 +110,7 @@ public class Board {
         }
         for (Piece piece : pieceList) {
             if (piece.getColor() != color) {
-                List<IChess.ChessPosition> enemyList = piece.getPossibleMoves(board);
+                List<IChess.ChessPosition> enemyList = piece.getPossibleMoves(this);
                 for (IChess.ChessPosition enemyPosition : enemyList) {
                     if (enemyPosition.equals(kingPosition)) {
                         return IChess.ChessKingState.KING_THREATEN;
@@ -107,17 +122,16 @@ public class Board {
 
     }
 
-    public List<IChess.ChessPosition> checkMoves(IChess.ChessPosition p, List<IChess.ChessPosition> possibleMoves, Board board) {
-        for (IChess.ChessPosition moves : possibleMoves) {
-            movePiece(p, moves,true);
-            IChess.ChessColor color = board.getPiece(p).getColor();
-            IChess.ChessKingState status = kingState(color, board);
-            movePiece(moves, p, true);
-            if (status == IChess.ChessKingState.KING_THREATEN) {
-                possibleMoves.remove(moves);
+    public List<IChess.ChessPosition> checkMoves(IChess.ChessPosition p, List<IChess.ChessPosition> possibleMoves) {
+        List<IChess.ChessPosition> realMoves =new ArrayList<IChess.ChessPosition>();
+        for (IChess.ChessPosition position : possibleMoves) {
+            try{
+                movePiece(p, position, true);
+                realMoves.add(position);
+            } catch (ChessException e) {
             }
         }
-        return possibleMoves;
+        return realMoves;
 
     }
 }
