@@ -55,7 +55,8 @@ public class ChessModel implements IChess {
     @Override
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
         try {
-            return board.getPiece(p).getPossibleMoves(board);
+            List<ChessPosition> possibleMoves = board.getPiece(p).getPossibleMoves(board);
+            return board.checkMoves(p, possibleMoves, board);
         } catch (NullPointerException npe) {
             return new ArrayList<>();
         }

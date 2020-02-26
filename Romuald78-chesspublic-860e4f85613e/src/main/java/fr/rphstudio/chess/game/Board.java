@@ -56,16 +56,20 @@ public class Board {
     }
 
     public Piece movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1) {
+        return this.movePiece(p0, p1, false);
+    }
+
+    public Piece movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1, boolean isFakeMove) {
         Piece pieceToMove = getPiece(p0);
         Piece pieceToRemove = getPiece(p1);
         pieceToMove.setPosition(p1);
         if (pieceToRemove != null) {
-            int index = pieceList.indexOf(pieceToRemove);
-            Piece pieceLost = pieceList.get(index);
             pieceList.remove(pieceToRemove);
-            return pieceLost;
         }
-        return null;
+        if (isFakeMove) {
+            pieceList.add(pieceToRemove);
+        }
+        return pieceToRemove;
     }
 
     public int getRemainingPieces(IChess.ChessColor color) {
@@ -100,6 +104,20 @@ public class Board {
             }
         }
         return IChess.ChessKingState.KING_SAFE;
+
+    }
+
+    public List<IChess.ChessPosition> checkMoves(IChess.ChessPosition p, List<IChess.ChessPosition> possibleMoves, Board board) {
+        for (IChess.ChessPosition moves : possibleMoves) {
+            movePiece(p, moves,true);
+            IChess.ChessColor color = board.getPiece(p).getColor();
+            IChess.ChessKingState status = kingState(color, board);
+            movePiece(moves, p, true);
+            if (status == IChess.ChessKingState.KING_THREATEN) {
+                possibleMoves.remove(moves);
+            }
+        }
+        return possibleMoves;
 
     }
 }
