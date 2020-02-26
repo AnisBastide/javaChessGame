@@ -8,6 +8,6 @@ public class Bishop implements IMove{
 
     @Override
     public List<IChess.ChessPosition> getPieceMoves(IChess.ChessPosition p, Board board){
-        return MoveUtil.Diagonal(p, board);
+        return MoveUtil.Diagonal(p, board, 7);
     }
 }

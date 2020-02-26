@@ -38,9 +38,10 @@ public class MoveUtil {
         }
     }
 
-    public static List<IChess.ChessPosition> Diagonal(IChess.ChessPosition p, Board board) {
+    public static List<IChess.ChessPosition> Diagonal(IChess.ChessPosition p, Board board, int u) {
         List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
         for (int dir = 0; dir <= 3; dir++) {
+            int i = 1;
             int dx = 1;
             int dy = 1;
             if (dir % 2 == 0) {
@@ -50,16 +51,20 @@ public class MoveUtil {
                 dy = -1;
             }
             for (int dis = 1; dis <= 7; dis++) {
-                IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
-                return PossibleMove(p, pos, board);
+                do {
+                    IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
+                    u++;
+                    return PossibleMove(p, pos, board);
+                }while (i < u);
             }
         }
         return list;
     }
 
-    public static List<IChess.ChessPosition> Horizontal(IChess.ChessPosition p, Board board){
+    public static List<IChess.ChessPosition> Horizontal(IChess.ChessPosition p, Board board, int u){
         List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
         for (int dir = 0; dir <= 3; dir ++){
+            int i = 1;
             int dx = 0;
             int dy = 0;
             switch (dir){
@@ -77,8 +82,11 @@ public class MoveUtil {
                     break;
             }
             for (int dis = 1; dis <= 7; dis++) {
-                IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
-                return PossibleMove(p, pos, board);
+                do {
+                    IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
+                    u++;
+                    return PossibleMove(p, pos, board);
+                }while (i < u);
             }
         }
         return list;
