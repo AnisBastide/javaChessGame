@@ -53,12 +53,25 @@ public class Board {
         }
         return null;
     }
-    public void movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1){
-        Piece pieceToMove =getPiece(p0);
+
+    public void movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1) {
+        Piece pieceToMove = getPiece(p0);
         Piece pieceToRemove = getPiece(p1);
-        if(pieceToRemove!=null){
+        if (pieceToRemove != null) {
             pieceList.remove(pieceToRemove);
         }
-        pieceToMove.setPosition(p1);
+    }
+
+    public int getRemainingPieces (IChess.ChessColor color){
+        int count=0;
+        for (Piece piece: pieceList
+             )
+        {
+            if (piece.getColor().equals(color)){
+                count++;
+            }
+
+        }
+        return count;
     }
 }

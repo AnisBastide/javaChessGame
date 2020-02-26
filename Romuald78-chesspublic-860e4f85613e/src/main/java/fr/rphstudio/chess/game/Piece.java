@@ -27,7 +27,11 @@ public class Piece {
         return type;
     }
 
-    public IChess.ChessColor GetColor() {
+    public IChess.ChessType getType(){
+        return type;
+    }
+    public IChess.ChessColor getColor(){
+
         return color;
     }
 

@@ -12,7 +12,7 @@ public class Pawn implements IMove {
     public List<IChess.ChessPosition> getPieceMoves(IChess.ChessPosition p, Board board) {
         IChess.ChessPosition position;
         List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
-        switch (board.getPiece(p).GetColor()) {
+        switch (board.getPiece(p).getColor()) {
             case CLR_WHITE:
                 if (p.y == 6 && board.getPiece(new IChess.ChessPosition(p.x, p.y - 1)) == null) {
                     list.add(new IChess.ChessPosition(p.x, p.y - 6));

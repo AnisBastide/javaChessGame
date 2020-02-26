@@ -30,8 +30,8 @@ public class ChessModel implements IChess {
     @Override
     public ChessType getPieceType(ChessPosition p) throws EmptyCellException, OutOfBoardException {
         try {
-            return board.getPiece(p).GetType();
-        } catch (NullPointerException npe) {
+            return board.getPiece(p).getType();
+        }catch (NullPointerException npe){
             throw new EmptyCellException();
         }
 
@@ -40,15 +40,15 @@ public class ChessModel implements IChess {
     @Override
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
         try {
-            return board.getPiece(p).GetColor();
-        } catch (NullPointerException npe) {
+            return board.getPiece(p).getColor();
+        }catch (NullPointerException npe){
             throw new EmptyCellException();
         }
     }
 
     @Override
     public int getNbRemainingPieces(ChessColor color) {
-        return 0;
+        return board.getRemainingPieces(color);
     }
 
     @Override
