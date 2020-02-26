@@ -14,7 +14,7 @@ public class Board {
     public Board() {
         IChess.ChessColor color;
         IChess.ChessType type=null;
-        IMove move= new Pawn();
+        IMove move= new King();
         pieceList = new ArrayList<Piece>();
         for (int x = 0; x <= 7; x++) {
             for (int y = 0; y <= 7; y++) {
