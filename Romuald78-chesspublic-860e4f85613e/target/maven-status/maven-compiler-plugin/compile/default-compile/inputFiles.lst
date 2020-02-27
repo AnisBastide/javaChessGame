@@ -2,6 +2,7 @@
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/interf/EmptyCellException.java
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Pawn.java
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Knight.java
+/Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Timer.java
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/interf/OutOfBoardException.java
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/Rook.java
 /Users/Anis/Desktop/javaChessGame/Romuald78-chesspublic-860e4f85613e/src/main/java/fr/rphstudio/chess/game/ChessModel.java
