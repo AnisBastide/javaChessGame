@@ -12,7 +12,7 @@ import static fr.rphstudio.chess.interf.IChess.ChessColor.CLR_WHITE;
 
 public class Board {
     private List<Piece> pieceList;
-    public Undo undo = new Undo();
+    private Undo undo = new Undo();
 
     public Board() {
         IChess.ChessColor color;
@@ -92,13 +92,19 @@ public class Board {
             }
         }
         else{
-            undo.setUndo(p0, p1, pieceToRemove);
+            undo.setUndo(p0, p1, pieceToRemove,pieceToMove);
         }
         return pieceToRemove;
     }
-    public void moveUndo(IChess.ChessPosition p0, IChess.ChessPosition p1) {
-        Piece pieceToMove = getPiece(p1);
-        pieceToMove.setPosition(p0);
+    public boolean moveUndo() {
+        try{
+            undo.getPieceToMove().setPosition(undo.getSourcePosition());
+            this.addPieces(undo.getRemovedPiece());
+            return true;
+        } catch (Exception e) {
+            System.out.println("je passe pas un catch");
+            return false;
+        }
 
     }
     public int getRemainingPieces(IChess.ChessColor color) {

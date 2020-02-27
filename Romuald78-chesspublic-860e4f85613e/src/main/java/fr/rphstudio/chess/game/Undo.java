@@ -3,23 +3,27 @@ package fr.rphstudio.chess.game;
 import fr.rphstudio.chess.interf.IChess;
 
 public class Undo {
-    private IChess.ChessPosition p0;
-    private IChess.ChessPosition p1;
+    private IChess.ChessPosition sourcePosition;
+    private IChess.ChessPosition finalPosition;
     private Piece removedPiece;
-    public void setUndo(IChess.ChessPosition p0,IChess.ChessPosition p1, Piece removedPiece){
-        this.p0=p0;
-        this.p1=p1;
+    private Piece pieceToMove;
+    public void setUndo(IChess.ChessPosition p0,IChess.ChessPosition p1, Piece removedPiece,Piece pieceToUndo){
+        this.sourcePosition =p0;
+        this.finalPosition =p1;
         this.removedPiece=removedPiece;
+        this.pieceToMove=pieceToUndo;
     }
-    public boolean undo(Board board){
-        try {
-            board.moveUndo(this.p1, this.p0);
-           board.addPieces(removedPiece);
-            return true;
-        } catch (Exception e) {
-            System.out.println("t nul");
-            return false;
-        }
+    public Piece getPieceToMove(){
+        return pieceToMove;
+    }
 
+    public IChess.ChessPosition getFinalPosition(){
+        return finalPosition;
+    }
+    public IChess.ChessPosition getSourcePosition(){
+        return sourcePosition;
+    }
+    public Piece getRemovedPiece(){
+        return removedPiece;
     }
 }

@@ -86,7 +86,7 @@ public class ChessModel implements IChess {
 
     @Override
     public boolean undoLastMove() {
-        return board.undo.undo(board);
+        return board.moveUndo();
     }
 
         @Override
