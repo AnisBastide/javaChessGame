@@ -271,17 +271,6 @@
     </state>
     <state x="-1295" y="140" width="670" height="676" key="search.everywhere.popup/0.0.1440.900/-1920.-101.1920.1080@-1920.-101.1920.1080" timestamp="1582557867746" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/fr/rphstudio/chess/game/MoveUtil.java</url>
-          <line>86</line>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="hg4idea.settings">
     <option name="CHECK_INCOMING_OUTGOING" value="true" />
     <option name="RECENT_HG_ROOT_PATH" value="$PROJECT_DIR$" />

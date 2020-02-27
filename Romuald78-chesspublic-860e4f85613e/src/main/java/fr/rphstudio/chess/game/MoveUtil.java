@@ -40,7 +40,7 @@ public class MoveUtil {
 
     private static boolean check = true;
 
-    public static List<IChess.ChessPosition> Diagonal(IChess.ChessPosition p, Board board) {
+    public static List<IChess.ChessPosition> Diagonal(IChess.ChessPosition p, Board board, int i) {
         List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
         for (int dir = 0; dir <= 4; dir++) {
             int dx = 1;
@@ -52,7 +52,7 @@ public class MoveUtil {
             if (dir < 2) {
                 dy = -1;
             }
-            for (int dis = 1; dis <= 7; dis++) {
+            for (int dis = 1; dis <= i; dis++) {
                 IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
                 list.addAll(PossibleMove(p, pos, board));
                 if (dir == 4){
@@ -63,7 +63,7 @@ public class MoveUtil {
         return new ArrayList<>();
     }
 
-    public static List<IChess.ChessPosition> Horizontal(IChess.ChessPosition p, Board board){
+    public static List<IChess.ChessPosition> Horizontal(IChess.ChessPosition p, Board board, int i){
         List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
         for (int dir = 0; dir <= 4; dir ++){
             int dx = 0;
@@ -83,64 +83,10 @@ public class MoveUtil {
                     dy = 1;
                     break;
             }
-            for (int dis = 1; dis <= 7; dis++) {
+            for (int dis = 1; dis <= i; dis++) {
                 IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
                 list.addAll(PossibleMove(p, pos, board));
                 if (dir == 4){
-                    return list;
-                }
-            }
-        }
-        return new ArrayList<>();
-    }
-
-    public static List<IChess.ChessPosition> DiagonalKing(IChess.ChessPosition p, Board board) {
-        List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
-        for (int dir = 0; dir <= 3; dir++) {
-            int dx = 1;
-            int dy = 1;
-            check = true;
-            if (dir % 2 == 0) {
-                dx = -1;
-            }
-            if (dir < 2) {
-                dy = -1;
-            }
-            for (int dis = 1; dis <= 1; dis++) {
-                IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
-                list.addAll(PossibleMove(p, pos, board));
-                if (dir == 3){
-                    return list;
-                }
-            }
-        }
-        return new ArrayList<>();
-    }
-
-    public static List<IChess.ChessPosition> HorizontalKing(IChess.ChessPosition p, Board board){
-        List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
-        for (int dir = 0; dir <= 3; dir ++){
-            int dx = 0;
-            int dy = 0;
-            check = true;
-            switch (dir){
-                case 0:
-                    dy = -1;
-                    break;
-                case 1:
-                    dx = -1;
-                    break;
-                case 2:
-                    dx = 1;
-                    break;
-                case 3:
-                    dy = 1;
-                    break;
-            }
-            for (int dis = 1; dis <= 1; dis++) {
-                IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
-                list.addAll(PossibleMove(p, pos, board));
-                if (dir == 3){
                     return list;
                 }
             }
