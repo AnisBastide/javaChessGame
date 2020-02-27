@@ -206,7 +206,7 @@ public class MoveUtil {
         }
         if (p.y == cy && board.getPiece(new IChess.ChessPosition(p.x, p.y + dy)) == null){
             list.add(new IChess.ChessPosition(p.x, p.y + dy));
-            if (p.y == cy && board.getPiece(new IChess.ChessPosition(p.x, p.y + dy)) == null){
+            if (p.y == cy && board.getPiece(new IChess.ChessPosition(p.x, p.y + dy)) == null && board.getPiece(new IChess.ChessPosition(p.x, p.y + (dy*2))) == null){
                 list.add(new IChess.ChessPosition(p.x, p.y + (dy * 2)));
             }
         }
