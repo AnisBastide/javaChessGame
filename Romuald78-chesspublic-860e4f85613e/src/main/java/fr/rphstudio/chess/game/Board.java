@@ -11,9 +11,18 @@ import static fr.rphstudio.chess.interf.IChess.ChessColor.CLR_BLACK;
 import static fr.rphstudio.chess.interf.IChess.ChessColor.CLR_WHITE;
 
 public class Board {
+    /**
+     * list of pieces on the board
+     */
     private List<Piece> pieceList;
+    /**
+     * list of move that had been done
+     */
     private List<Undo> undoList= new ArrayList<Undo>();
 
+    /**
+     * The constructor place all the pieces on the board at the beginning of a game
+     */
     public Board() {
         IChess.ChessColor color;
         IChess.ChessType type = null;
@@ -42,17 +51,22 @@ public class Board {
                     move = new Bishop();
                     type = IChess.ChessType.TYP_BISHOP;
                 } else if (cPosition.x == 4) {
-                    move = new Queen();
-                    type = IChess.ChessType.TYP_QUEEN;
-                } else if (cPosition.x == 3) {
                     move = new King();
                     type = IChess.ChessType.TYP_KING;
+                } else if (cPosition.x == 3) {
+                    move = new Queen();
+                    type = IChess.ChessType.TYP_QUEEN;
                 }
                 pieceList.add(new Piece(color, type, (IChess.ChessPosition) cPosition, move));
             }
         }
     }
 
+    /**
+     * get a piece using his position
+     * @param p position of the piece
+     * @return the piece
+     */
     public Piece getPiece(IChess.ChessPosition p) {
         for (Piece piece : pieceList) {
             if (piece != null) {
@@ -64,6 +78,12 @@ public class Board {
         return null;
     }
 
+    /**
+     * call the movePiece method without the third argument
+     * @param p0 initial position
+     * @param p1 position the piece is being moved at
+     * @return the piece that has been eaten (if so)
+     */
     public Piece movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1) {
         Piece piece = null;
         try {
@@ -74,6 +94,13 @@ public class Board {
         return piece;
     }
 
+    /**
+     * move the piece
+     * can also move the piece and move the piece again to the original position to check if the king is in check in this position
+     * @param p0 initial position
+     * @param p1 position the piece is being moved at
+     * @return the piece that has been eaten (if so)
+     */
     public Piece movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1, boolean isFakeMove) throws ChessException {
         Piece pieceToMove = getPiece(p0);
         Piece pieceToRemove = getPiece(p1);
@@ -109,12 +136,19 @@ public class Board {
         }
         return pieceToRemove;
     }
-    public boolean moveUndo() {
+
+    /**
+     * undo the last move
+     * @return true if the move is successfully undone, false if not
+     */
+    public boolean moveUndo(LostPieces lostPieces) {
         try{
             Undo undo=undoList.get(undoList.size()-1);
             undo.getPieceToMove().setPosition(undo.getSourcePosition());
             this.addPieces(undo.getRemovedPiece());
             undoList.remove(undo);
+            lostPieces.removePiece(undo.getRemovedPiece());
+
             return true;
         } catch (Exception e) {
             System.out.println("je passe pas un catch");
@@ -122,6 +156,12 @@ public class Board {
         }
 
     }
+
+    /**
+     * is used to get the number of pieces remaining in a color
+     * @param color of pieces you want the remaining number
+     * @return the number of pieces remaining in the color
+     */
     public int getRemainingPieces(IChess.ChessColor color) {
         int count = 0;
         for (Piece piece : pieceList) {
@@ -136,6 +176,11 @@ public class Board {
         return count;
     }
 
+    /**
+     * check if the king is in check
+     * @param color color of the king you want to check
+     * @return the state of the king
+     */
     public IChess.ChessKingState kingState(IChess.ChessColor color) {
         IChess.ChessPosition kingPosition = new IChess.ChessPosition();
         for (Piece piece : pieceList) {
@@ -161,6 +206,12 @@ public class Board {
 
     }
 
+    /**
+     * check the possibles moves of a piece (delete a move if the king is in check when you do it)
+     * @param p position of the piece
+     * @param possibleMoves all possible moves before checking
+     * @return the list of possible move without the king to be in check
+     */
     public List<IChess.ChessPosition> checkMoves(IChess.ChessPosition p, List<IChess.ChessPosition> possibleMoves) {
         List<IChess.ChessPosition> realMoves = new ArrayList<IChess.ChessPosition>();
         for (IChess.ChessPosition position : possibleMoves) {
@@ -174,6 +225,10 @@ public class Board {
 
     }
 
+    /**
+     * add a pieces to the board
+     * @param piece piece to be added to the board
+     */
     public void addPieces(Piece piece) {
         pieceList.add(piece);
     }
