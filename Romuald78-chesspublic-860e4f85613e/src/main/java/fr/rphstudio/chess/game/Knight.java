@@ -7,6 +7,12 @@ import java.util.List;
 
 public class Knight implements IMove {
 
+    /**
+     * Get possible movements of Knight.
+     * @param p Actual position of the piece.
+     * @param board box setting (color, type, empty or not).
+     * @return
+     */
     @Override
     public List<IChess.ChessPosition> getPieceMoves(IChess.ChessPosition p, Board board) {
         List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();

@@ -8,6 +8,13 @@ import java.util.List;
 
 public class King implements IMove {
 
+    /**
+     * Get possible movements of King.
+     * Set horizontal, vertical and diagonal movements for the King (limited to one box).
+     * @param p Actual position of the piece.
+     * @param board box setting (color, type, empty or not).
+     * @return
+     */
     @Override
     public List<IChess.ChessPosition> getPieceMoves(IChess.ChessPosition p, Board board) {
         List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
