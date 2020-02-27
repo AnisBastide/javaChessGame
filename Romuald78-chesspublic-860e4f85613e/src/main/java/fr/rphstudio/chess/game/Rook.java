@@ -8,6 +8,6 @@ public class Rook implements IMove {
 
     @Override
     public List<IChess.ChessPosition> getPieceMoves(IChess.ChessPosition p, Board board) {
-        return MoveUtil.Horizontal(p, board, 7);
+        return MoveUtil.Horizontal(p, board);
     }
 }
