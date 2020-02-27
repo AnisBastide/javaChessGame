@@ -13,7 +13,7 @@ import static fr.rphstudio.chess.interf.IChess.ChessColor.CLR_WHITE;
 public class Board {
     private List<Piece> pieceList;
     //private Undo undo = new Undo();
-    private List<Undo> undoList;
+    private List<Undo> undoList= new ArrayList<Undo>();
 
     public Board() {
         IChess.ChessColor color;
