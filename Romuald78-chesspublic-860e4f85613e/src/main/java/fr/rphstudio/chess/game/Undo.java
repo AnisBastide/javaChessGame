@@ -7,7 +7,7 @@ public class Undo {
     private IChess.ChessPosition finalPosition;
     private Piece removedPiece;
     private Piece pieceToMove;
-    public void setUndo(IChess.ChessPosition p0,IChess.ChessPosition p1, Piece removedPiece,Piece pieceToUndo){
+    public Undo(IChess.ChessPosition p0,IChess.ChessPosition p1, Piece removedPiece,Piece pieceToUndo){
         this.sourcePosition =p0;
         this.finalPosition =p1;
         this.removedPiece=removedPiece;
