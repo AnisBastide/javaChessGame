@@ -15,47 +15,24 @@ public class Pawn implements IMove {
         switch (board.getPiece(p).getColor()) {
             case CLR_WHITE:
                 if (p.y == 6) {
-                    list.add(new IChess.ChessPosition(p.x, p.y - 1));
-                    list.add(new IChess.ChessPosition(p.x, p.y - 2));
+                    int dy = -1;
+                    pos = new IChess.ChessPosition(p.x, p.y + dy);
+                    list.addAll(MoveUtil.MoveStartPawn(p, pos, board, dy));
                 } else if (p.y < 6) {
-                    list.add(new IChess.ChessPosition(p.x, p.y - 1));
-                    try {
-                        if (board.getPiece(new IChess.ChessPosition(p.x + 1, p.y - 1)).getColor() != board.getPiece(p).getColor()) {
-                            list.add(new IChess.ChessPosition(p.x + 1, p.y - 1));
-                        }
-                    } catch (Exception e) {
-
-                    }
-                    try {
-                        if (board.getPiece(new IChess.ChessPosition(p.x - 1, p.y - 1)).getColor() != board.getPiece(p).getColor()) {
-                            list.add(new IChess.ChessPosition(p.x - 1, p.y - 1));
-                        }
-                    } catch (Exception e) {
-
-                    }
-
+                    int dy = -1;
+                    pos = new IChess.ChessPosition(p.x, p.y + dy);
+                    list.addAll(MoveUtil.MoveOtherPawn(p, pos, board, dy));
                 }
                 break;
             case CLR_BLACK:
                 if (p.y == 1) {
-                    list.add(new IChess.ChessPosition(p.x, p.y + 1));
-                    list.add(new IChess.ChessPosition(p.x, p.y + 2));
+                    int dy = 1;
+                    pos = new IChess.ChessPosition(p.x, p.y + dy);
+                    list.addAll(MoveUtil.MoveStartPawn(p, pos, board, dy));
                 } else if (p.y > 1) {
-                    list.add(new IChess.ChessPosition(p.x, p.y + 1));
-                    try {
-                        if (board.getPiece(new IChess.ChessPosition(p.x + 1, p.y + 1)).getColor() != board.getPiece(p).getColor()) {
-                            list.add(new IChess.ChessPosition(p.x + 1, p.y + 1));
-                        }
-                    } catch (Exception e) {
-
-                    }
-                    try{
-                        if (board.getPiece(new IChess.ChessPosition(p.x - 1, p.y + 1)).getColor() != board.getPiece(p).getColor()) {
-                            list.add(new IChess.ChessPosition(p.x - 1, p.y + 1));
-                        }
-                    } catch (Exception e) {
-
-                    }
+                    int dy = 1;
+                    pos = new IChess.ChessPosition(p.x, p.y + dy);
+                    list.addAll(MoveUtil.MoveOtherPawn(p, pos, board, dy));
                 }
                 break;
         }

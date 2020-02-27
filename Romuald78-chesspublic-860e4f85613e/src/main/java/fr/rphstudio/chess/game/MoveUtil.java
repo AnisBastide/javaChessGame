@@ -129,4 +129,73 @@ public class MoveUtil {
         }
         return list;
     }
+
+    public static List<IChess.ChessPosition> MoveStartPawn(IChess.ChessPosition p, IChess.ChessPosition pos, Board board, int dy) {
+        List<IChess.ChessPosition> list = new ArrayList<>();
+        int cy = 0;
+        switch (dy){
+            case (1):
+                cy = 1;
+                break;
+            case (-1):
+                cy = 6;
+        }
+        if (p.y == cy && board.getPiece(new IChess.ChessPosition(p.x, p.y + dy)) == null){
+            list.add(new IChess.ChessPosition(p.x, p.y + dy));
+            if (p.y == cy && board.getPiece(new IChess.ChessPosition(p.x, p.y + dy)) == null){
+                list.add(new IChess.ChessPosition(p.x, p.y + (dy * 2)));
+            }
+        }
+        try {
+            pos = new IChess.ChessPosition(p.x + 1, p.y + dy);
+            if (board.getPiece(new IChess.ChessPosition(p.x + 1, p.y + dy)).getColor() != board.getPiece(p).getColor() && MoveUtil.isValidPosition(pos)) {
+                list.add(new IChess.ChessPosition(p.x + 1, p.y + dy));
+            }
+        } catch (Exception e){
+
+        }
+        try {
+            pos = new IChess.ChessPosition(p.x - 1, p.y + dy);
+            if (board.getPiece(new IChess.ChessPosition(p.x - 1, p.y + dy)).getColor() != board.getPiece(p).getColor() && MoveUtil.isValidPosition(pos)) {
+                list.add(new IChess.ChessPosition(p.x - 1, p.y + dy));
+            }
+        } catch(Exception e) {
+
+        }
+        return list;
+    }
+
+    public static List<IChess.ChessPosition> MoveOtherPawn(IChess.ChessPosition p, IChess.ChessPosition pos, Board board, int dy) {
+        List<IChess.ChessPosition> list = new ArrayList<>();
+        int cy = 0;
+        switch (dy){
+            case (1):
+                cy = 1;
+                break;
+            case (-1):
+                cy = 6;
+        }
+        if (MoveUtil.isValidPosition(pos)) {
+            if (p.y != cy && board.getPiece(new IChess.ChessPosition(p.x, p.y + dy)) == null){
+                list.add(new IChess.ChessPosition(p.x, p.y + dy));
+            }
+            try {
+                pos = new IChess.ChessPosition(p.x + 1, p.y + dy);
+                if (board.getPiece(new IChess.ChessPosition(p.x + 1, p.y + dy)).getColor() != board.getPiece(p).getColor() && MoveUtil.isValidPosition(pos)) {
+                    list.add(new IChess.ChessPosition(p.x + 1, p.y + dy));
+                }
+            } catch (Exception e) {
+
+            }
+            try {
+                pos = new IChess.ChessPosition(p.x - 1, p.y + dy);
+                if (board.getPiece(new IChess.ChessPosition(p.x - 1, p.y + dy)).getColor() != board.getPiece(p).getColor() && MoveUtil.isValidPosition(pos)) {
+                    list.add(new IChess.ChessPosition(p.x - 1, p.y + dy));
+                }
+            } catch (Exception e) {
+
+            }
+        }
+        return list;
+    }
 }
