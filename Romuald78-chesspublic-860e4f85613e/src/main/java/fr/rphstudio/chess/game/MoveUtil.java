@@ -38,12 +38,14 @@ public class MoveUtil {
         }
     }
 
-    public static List<IChess.ChessPosition> Diagonal(IChess.ChessPosition p, Board board, int u) {
+    private static boolean check = true;
+
+    public static List<IChess.ChessPosition> Diagonal(IChess.ChessPosition p, Board board) {
         List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
         for (int dir = 0; dir <= 3; dir++) {
-            int i = 1;
             int dx = 1;
             int dy = 1;
+            check = true;
             if (dir % 2 == 0) {
                 dx = -1;
             }
@@ -51,22 +53,22 @@ public class MoveUtil {
                 dy = -1;
             }
             for (int dis = 1; dis <= 7; dis++) {
-                do {
-                    IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
-                    u++;
-                    return PossibleMove(p, pos, board);
-                }while (i < u);
+                IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
+                list.addAll(PossibleMove(p, pos, board));
+                if (dir == 3){
+                    return list;
+                }
             }
         }
-        return list;
+        return new ArrayList<>();
     }
 
-    public static List<IChess.ChessPosition> Horizontal(IChess.ChessPosition p, Board board, int u){
+    public static List<IChess.ChessPosition> Horizontal(IChess.ChessPosition p, Board board){
         List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
         for (int dir = 0; dir <= 3; dir ++){
-            int i = 1;
             int dx = 0;
             int dy = 0;
+            check = true;
             switch (dir){
                 case 0:
                     dy = -1;
@@ -82,25 +84,29 @@ public class MoveUtil {
                     break;
             }
             for (int dis = 1; dis <= 7; dis++) {
-                do {
-                    IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
-                    u++;
-                    return PossibleMove(p, pos, board);
-                }while (i < u);
+                IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
+                list.addAll(PossibleMove(p, pos, board));
+                if (dir == 3){
+                    return list;
+                }
             }
         }
-        return list;
+        return new ArrayList<>();
     }
 
     public static List<IChess.ChessPosition> PossibleMove(IChess.ChessPosition p, IChess.ChessPosition pos, Board board){
         List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
-        if (pos.x <= 7 && pos.x >= 0 && pos.y <= 7 && pos.y >= 0) {
+        if (pos.x <= 7 && pos.x >= 0 && pos.y <= 7 && pos.y >= 0 && check == true) {
             if (board.getPiece(pos) == null){
                 list.add(pos);
             }
             if (board.getPiece(pos) != null){
+                if (board.getPiece(pos).getColor() == board.getPiece(p).getColor()){
+                    check = false;
+                }
                 if (board.getPiece(pos).getColor() != board.getPiece(p).getColor()){
                     list.add(pos);
+                    check = false;
                 }
             }
             return list;
