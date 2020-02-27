@@ -88,10 +88,10 @@ public class ChessModel implements IChess {
 
     @Override
     public boolean undoLastMove() {
-        return false;
+        return board.moveUndo();
     }
 
-    @Override
+        @Override
     public long getPlayerDuration(ChessColor color, boolean isPlaying) {
         return timer.getTimer(color,isPlaying);
     }

@@ -12,6 +12,7 @@ import static fr.rphstudio.chess.interf.IChess.ChessColor.CLR_WHITE;
 
 public class Board {
     private List<Piece> pieceList;
+    private List<Undo> undoList= new ArrayList<Undo>();
 
     public Board() {
         IChess.ChessColor color;
@@ -51,19 +52,22 @@ public class Board {
             }
         }
     }
+
     public Piece getPiece(IChess.ChessPosition p) {
         for (Piece piece : pieceList) {
-            if (piece.getPosition().equals(p)) {
-                return piece;
+            if (piece != null) {
+                if (piece.getPosition().equals(p)) {
+                    return piece;
+                }
             }
         }
         return null;
     }
 
     public Piece movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1) {
-        Piece piece=null;
-        try{
-            piece=this.movePiece(p0, p1, false);
+        Piece piece = null;
+        try {
+            piece = this.movePiece(p0, p1, false);
         } catch (ChessException e) {
 
         }
@@ -96,20 +100,37 @@ public class Board {
             if (pieceToRemove != null) {
                 pieceList.add(pieceToRemove);
             }
-            if (status== IChess.ChessKingState.KING_THREATEN){
+            if (status == IChess.ChessKingState.KING_THREATEN) {
                 throw new ChessException();
             }
         }
+        else{
+            undoList.add(new Undo(p0, p1, pieceToRemove,pieceToMove));
+        }
         return pieceToRemove;
     }
+    public boolean moveUndo() {
+        try{
+            Undo undo=undoList.get(undoList.size()-1);
+            undo.getPieceToMove().setPosition(undo.getSourcePosition());
+            this.addPieces(undo.getRemovedPiece());
+            undoList.remove(undo);
+            return true;
+        } catch (Exception e) {
+            System.out.println("je passe pas un catch");
+            return false;
+        }
 
+    }
     public int getRemainingPieces(IChess.ChessColor color) {
         int count = 0;
-        for (Piece piece : pieceList
-        ) {
-            if (piece.getColor().equals(color)) {
-                count++;
+        for (Piece piece : pieceList) {
+            if (piece != null) {
+                if (piece.getColor().equals(color)) {
+                    count++;
+                }
             }
+
 
         }
         return count;
@@ -125,11 +146,13 @@ public class Board {
 
         }
         for (Piece piece : pieceList) {
-            if (piece.getColor() != color) {
-                List<IChess.ChessPosition> enemyList = piece.getPossibleMoves(this);
-                for (IChess.ChessPosition enemyPosition : enemyList) {
-                    if (enemyPosition.equals(kingPosition)) {
-                        return IChess.ChessKingState.KING_THREATEN;
+            if (piece != null) {
+                if (piece.getColor() != color) {
+                    List<IChess.ChessPosition> enemyList = piece.getPossibleMoves(this);
+                    for (IChess.ChessPosition enemyPosition : enemyList) {
+                        if (enemyPosition.equals(kingPosition)) {
+                            return IChess.ChessKingState.KING_THREATEN;
+                        }
                     }
                 }
             }
@@ -139,9 +162,9 @@ public class Board {
     }
 
     public List<IChess.ChessPosition> checkMoves(IChess.ChessPosition p, List<IChess.ChessPosition> possibleMoves) {
-        List<IChess.ChessPosition> realMoves =new ArrayList<IChess.ChessPosition>();
+        List<IChess.ChessPosition> realMoves = new ArrayList<IChess.ChessPosition>();
         for (IChess.ChessPosition position : possibleMoves) {
-            try{
+            try {
                 movePiece(p, position, true);
                 realMoves.add(position);
             } catch (ChessException e) {
@@ -149,5 +172,9 @@ public class Board {
         }
         return realMoves;
 
+    }
+
+    public void addPieces(Piece piece) {
+        pieceList.add(piece);
     }
 }
