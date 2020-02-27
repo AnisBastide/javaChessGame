@@ -11,6 +11,7 @@ public class ChessModel implements IChess {
     private static ChessModel instance = new ChessModel();
     private LostPieces lostPieces;
     private Board board;
+    private Timer timer;
 
 
     private ChessModel() {
@@ -25,6 +26,7 @@ public class ChessModel implements IChess {
     public void reinit() {
         board = new Board();
         lostPieces = new LostPieces();
+        timer=new Timer();
     }
 
 
@@ -91,8 +93,6 @@ public class ChessModel implements IChess {
 
     @Override
     public long getPlayerDuration(ChessColor color, boolean isPlaying) {
-        return 0;
+        return timer.getTimer(color,isPlaying);
     }
-
-
 }

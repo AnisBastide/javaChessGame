@@ -78,7 +78,6 @@ public class Board {
             pieceList.remove(pieceToRemove);
         }
         if (isFakeMove) {
-            //TODO tester l'etat du roi et memoriser
             IChess.ChessKingState status =kingState(pieceToMove.getColor());
             pieceToMove.setPosition(p0);
             if (pieceToRemove != null) {
