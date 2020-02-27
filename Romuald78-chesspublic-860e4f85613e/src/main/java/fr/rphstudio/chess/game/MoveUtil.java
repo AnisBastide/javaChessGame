@@ -40,7 +40,7 @@ public class MoveUtil {
 
     private static boolean check = true;
 
-    public static List<IChess.ChessPosition> Diagonal(IChess.ChessPosition p, Board board) {
+    public static List<IChess.ChessPosition> Diagonal(IChess.ChessPosition p, Board board, int i) {
         List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
         for (int dir = 0; dir <= 3; dir++) {
             int dx = 1;
@@ -52,7 +52,7 @@ public class MoveUtil {
             if (dir < 2) {
                 dy = -1;
             }
-            for (int dis = 1; dis <= 7; dis++) {
+            for (int dis = 1; dis <= i; dis++) {
                 IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
                 list.addAll(PossibleMove(p, pos, board));
                 if (dir == 3){
@@ -63,7 +63,7 @@ public class MoveUtil {
         return new ArrayList<>();
     }
 
-    public static List<IChess.ChessPosition> Horizontal(IChess.ChessPosition p, Board board){
+    public static List<IChess.ChessPosition> Horizontal(IChess.ChessPosition p, Board board, int i){
         List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
         for (int dir = 0; dir <= 3; dir ++){
             int dx = 0;
@@ -83,7 +83,7 @@ public class MoveUtil {
                     dy = 1;
                     break;
             }
-            for (int dis = 1; dis <= 7; dis++) {
+            for (int dis = 1; dis <= i; dis++) {
                 IChess.ChessPosition pos = new IChess.ChessPosition(p.x + (dx * dis), p.y + (dy * dis));
                 list.addAll(PossibleMove(p, pos, board));
                 if (dir == 3){
@@ -107,6 +107,22 @@ public class MoveUtil {
                 if (board.getPiece(pos).getColor() != board.getPiece(p).getColor()){
                     list.add(pos);
                     check = false;
+                }
+            }
+            return list;
+        }
+        return list;
+    }
+
+    public static List<IChess.ChessPosition> PossibleMoveKnight(IChess.ChessPosition p, IChess.ChessPosition pos, Board board){
+        List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
+        if (pos.x <= 7 && pos.x >= 0 && pos.y <= 7 && pos.y >= 0) {
+            if (board.getPiece(pos) == null){
+                list.add(pos);
+            }
+            if (board.getPiece(pos) != null){
+                if (board.getPiece(pos).getColor() != board.getPiece(p).getColor()){
+                    list.add(pos);
                 }
             }
             return list;

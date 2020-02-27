@@ -11,8 +11,8 @@ public class King implements IMove {
     @Override
     public List<IChess.ChessPosition> getPieceMoves(IChess.ChessPosition p, Board board) {
         List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
-        list.addAll(MoveUtil.Diagonal(p, board));
-        list.addAll(MoveUtil.Horizontal(p, board));
+        list.addAll(MoveUtil.Diagonal(p, board, 1));
+        list.addAll(MoveUtil.Horizontal(p, board, 1));
         return list;
     }
 }

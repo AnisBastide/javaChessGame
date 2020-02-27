@@ -14,7 +14,7 @@ public class Knight implements IMove {
             for (int dy = -2; dy <= 2; dy++){
                 if (Math.abs(dx) + Math.abs(dy) == 3){
                     IChess.ChessPosition pos = new IChess.ChessPosition(p.x + dx, p.y + dy);
-                    list.addAll(MoveUtil.PossibleMove(p, pos, board));
+                    list.addAll(MoveUtil.PossibleMoveKnight(p, pos, board));
                 }
             }
         }
