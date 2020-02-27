@@ -74,6 +74,19 @@ public class Board {
         Piece pieceToMove = getPiece(p0);
         Piece pieceToRemove = getPiece(p1);
         pieceToMove.setPosition(p1);
+        if (getPiece(p1).getType()== IChess.ChessType.TYP_PAWN && (getPiece(p1).getPosition().y == 0 || getPiece(p1).getPosition().y == 7) && isFakeMove==false){
+            if(getPiece(p1).getColor()==CLR_WHITE && getPiece(p1).getPosition().y == 0){
+                pieceList.remove(getPiece(p1));
+                IMove move = new Queen();
+                pieceList.add(new Piece(CLR_WHITE, IChess.ChessType.TYP_QUEEN, (IChess.ChessPosition) p1, move));
+
+            }
+            else if(getPiece(p1).getColor()==CLR_BLACK && getPiece(p1).getPosition().y == 7){
+                pieceList.remove(getPiece(p1));
+                IMove move = new Queen();
+                pieceList.add(new Piece(CLR_BLACK, IChess.ChessType.TYP_QUEEN, (IChess.ChessPosition) p1, move));
+            }
+        }
         if (pieceToRemove != null) {
             pieceList.remove(pieceToRemove);
         }
